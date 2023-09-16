@@ -43,5 +43,18 @@ public class PrimeiraAula {
         LocalDateTime dataHoraPersonalizada = LocalDateTime.of(hoje, horaMinutoSegundo);
         System.out.println(dataHoraPersonalizada);
 
+        // Comparação entre datas
+
+        LocalDate dataFutura = LocalDate.of(2023, Month.DECEMBER, 12);
+        LocalDate dataAtual = LocalDate.now();
+        System.out.println("data futura é depois da data atual? " + dataFutura.isAfter(dataAtual));
+        System.out.println("data futura é antes da data atual? " + dataFutura.isBefore(dataAtual));
+
+        LocalDateTime dataHoraFutura = LocalDateTime.of(2023, Month.SEPTEMBER, 15,
+                22,0, 0);
+        LocalDateTime dataHoraAtual = LocalDateTime.now();
+        System.out.println("dataHoraFutura é depois da dataHoraAtual? " + dataHoraFutura.isAfter(dataHoraAtual));
+        System.out.println("dataHoraFutura é antes da dataHoraAtual? " + dataHoraFutura.isBefore(dataHoraAtual));
+
     }
 }
