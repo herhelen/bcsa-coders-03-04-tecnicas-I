@@ -23,10 +23,11 @@ public class DataVacina {
     */
 
     public static void calendarioVacinas(LocalDate primeiraDose) {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-        System.out.println("Primeira dose: " + primeiraDose);
-        System.out.println("Segunda dose: " + primeiraDose.plusMonths(1));
-        System.out.println("Terceira dose: " + primeiraDose.plusMonths(2));
+        System.out.println("Primeira dose: " + primeiraDose.format(formato));
+        System.out.println("Segunda dose: " + primeiraDose.plusMonths(1).format(formato));
+        System.out.println("Terceira dose: " + primeiraDose.plusMonths(2).format(formato));
     }
 
     public static void main(String[] args) {
