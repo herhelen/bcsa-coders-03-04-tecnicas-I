@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExercicioDatas {
 
@@ -44,12 +45,16 @@ public class ExercicioDatas {
     */
     public static List<String> date2Str(List<LocalDate> dates) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        List<String> strings = new ArrayList<>();
-
-        for(LocalDate date : dates) {
-            strings.add(date.format(formatter));
-        }
-        return strings;
+//        List<String> strings = new ArrayList<>();
+//
+//        for(LocalDate date : dates) {
+//            strings.add(date.format(formatter));
+//        }
+//        return strings;
+        return dates
+                .stream()
+                .map(element -> element.format(formatter))
+                .collect(Collectors.toList());
     }
 
     /*
