@@ -6,21 +6,42 @@ public class Main {
 
     public static void main(String[] args) {
         Database db = new Database();
-        Optional<User> searchedUser = db.getByLogin("login 3");
-        printUserLoginOptional(searchedUser);
-        searchedUser.ifPresentOrElse(
+
+        Optional<User> searchedNoUser = db.getByLogin("login 3");
+
+        printUserLoginOptional(searchedNoUser);
+        searchedNoUser.ifPresentOrElse(
             user -> printUserLogin(user),
             () -> System.out.println("ifPresentOrElse: User not found.")
         );
+//        searchedNoUser.orElseThrow(
+//            () -> new RuntimeException("orElseThrow: User not found.")
+//        );
+        System.out.println();
+
+        Optional<User> searchedUser = db.getByLogin("login 2");
+
+        printUserLoginOptional(searchedUser);
+        searchedUser.ifPresentOrElse(
+                user -> printUserLogin(user),
+                () -> System.out.println("ifPresentOrElse: User not found.")
+        );
+        User user = searchedUser.orElseThrow(
+                () -> new RuntimeException("orElseThrow: User not found.")
+        );
+        printUserLogin(user);
+        System.out.println();
+
+
     }
 
     public static void printUserLogin(User user) {
-        System.out.println(user.getLogin());
+        System.out.println("printUserLogin: " + user.getLogin());
     }
 
     public static void printUserLoginOptional(Optional<User> user) {
         if (user.isPresent()) {
-            System.out.println(user.get().getLogin());
+            System.out.println("printUserLoginOptional: " + user.get().getLogin());
         } else {
             System.out.println("printUserLoginOptional: User not found.");
         }
