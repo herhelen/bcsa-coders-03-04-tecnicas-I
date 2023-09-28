@@ -2,6 +2,7 @@ package aula06.optional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Database {
     List<User> users;
@@ -14,13 +15,13 @@ public class Database {
         );
     }
 
-    public User getByLogin(String login) {
+    public Optional<User> getByLogin(String login) {
         for(User user : this.users) {
             if(user.getLogin().equalsIgnoreCase(login)) {
-                return user;
+                return Optional.of(user);
             }
         }
 
-        return null;
+        return Optional.empty();
     }
 }
