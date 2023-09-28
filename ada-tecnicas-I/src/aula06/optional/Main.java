@@ -32,6 +32,17 @@ public class Main {
         printUserLogin(user);
         System.out.println();
 
+        // Optional with map
+        String searchedUserLogin = searchedUser.map(u -> u.getLogin()).get();
+        System.out.println(searchedUserLogin);
+        System.out.println();
+
+        // Optional with filter
+        String searchedUserFilter = searchedUser
+                .filter(u -> u.getPwd().length() > 3)
+                .map(u -> u.getLogin())
+                .get();
+        System.out.println(searchedUserFilter);
 
     }
 
